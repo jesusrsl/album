@@ -10,7 +10,28 @@
 {% endblock %}
 
 {% block maincontent %}
-    <div style="align-content: center">
+    <div class="row well">
+        {%  for f in object.foto_set.all %}
+            <div class="col-md-3 well">
+                <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">{{ f.titulo }}</h3>
+                        </div>
+                        <div class="panel-body">
+                            <a href="{% url 'detalle-foto' f.id %}">
+                                <img src="{%static f.foto.url %}" style="width:200px;height:200px"/>
+                            </a>
+                        </div>
+                </div>
+            </div>
+        {% endfor %}
+   </div>
+
+
+{% endblock %}
+
+<!--
+ <div style="align-content: center">
     <table border="1px">
         <tr>
             {% for p in object.foto_set.all %}
@@ -30,5 +51,4 @@
         </tr>
     </table>
     </div>
-{% endblock %}
-
+-->
