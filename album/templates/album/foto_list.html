@@ -5,21 +5,29 @@
     <h2>Listado completo de fotografías</h2>
 {% endblock %}
 
+
 {% block maincontent %}
-    <div>
-    <table border="1px">
-        <tr>
-            {% for p in object_list %}
-                <td>
-                    <div>{{ p.titulo }}</div>
-                    <div>
+    <div class="row well">
+        {% for p in object_list.all %}
+            <div class="col-md-4 well"> <!-- cols de tamaño 4, 12/4 salen 3 columnas. Si pones cols de tam 3, salen 4 cols -->
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{ p.titulo }}</h3>
+                    </div>
+                    <div class="panel-body">
                         <a href="{% url "detalle-foto" p.id %}">
-                            <img src="{% static p.foto.url %}" style="width:200px;height:200px"/>
+                            <img src="{% static p.foto.url %}" style="width:200px;height:200px;"/>
                         </a>
                     </div>
-                </td>
-            {% endfor %}
-        </tr>
-    </table>
+                    <div class="panel-footer">
+                        {% if p.comentario %}
+                            {{ p.comentario }}
+                        {% else %}
+                            <a href="{% url "editar-foto" p.id %}">Editar comentarios</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
-{% endblock %}
+{% endblock maincontent %}
