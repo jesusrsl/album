@@ -1,0 +1,8 @@
+*.jpg
+*.jpeg
+*.pyc
+.idea
+db.sqlite3
+__pycache__
+myvenv
+.DS_Store

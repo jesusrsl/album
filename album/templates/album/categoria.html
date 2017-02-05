@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block section %}
+
+    <h2>Categorías</h2>
+    <hr>
+
+{% endblock %}
+
+{% block maincontent %}
+    <div>
+        {% for c in object_list %}
+            <a href="{% url 'detalle-categoria' c.id %}"> <!-- <a href="{% url 'detalle-categoria' pk=c.pk %}"> -->
+                {{ c.nombre | capfirst}}
+            </a>
+            <br>
+        {% endfor %}
+    <a href="{%  url 'nueva-categoria' %}">Nueva categoría</a>
+    </div>
+
+{% endblock %}

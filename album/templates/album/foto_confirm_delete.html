@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block maincontent %}
+    <form action="" method="post">{% csrf_token %}
+        <p>¿Borrar "{{ object.titulo }}"?</p>
+        <input type="submit" value="Confirmar" />
+        <a class='btn' href="{% url 'lista-fotos' %}">Cancelar</a>
+    </form>
+{% endblock %}

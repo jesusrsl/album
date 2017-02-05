@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block section %}
+    <h2>{{ object.nombre | capfirst }}</h2>
+
+    <a href="{% url 'editar-categoria' object.id %}">Editar</a>
+    <a href="{% url 'eliminar-categoria' object.id %}">Eliminar</a>
+{% endblock %}
+
+{% block maincontent %}
+    <div>
+    <table border="1px">
+        <tr>
+            {% for p in object.foto_set.all %}
+                <td>
+                    <div>{{ p.titulo }}</div>
+                    <div>
+                        <a href="{% url "detalle-foto" p.id %}">
+                            <img src="{% static p.foto.url %}" style="width:250px;height:250px"/>
+                        </a>
+                    </div>
+                </td>
+            {% endfor %}
+        </tr>
+    </table>
+    </div>
+{% endblock %}
+
